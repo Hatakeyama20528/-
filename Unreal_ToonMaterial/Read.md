@@ -12,6 +12,7 @@ DirectX12でのCPU→GPUへのリソースのストリーミングやオクル�
 2. [作ってみる](#2-作ってみる)
 3. [レベルに配置してみる](#3-レベルに配置してみる)
 4. [改善案](#4-改善案)
+5. [その後](#5-その後)
 
 --- 
 ## 1. ToonShader
@@ -33,7 +34,7 @@ VRChatなどで使わているらしい
 - アウトラインも欲しい（背面法で実装）
 --- 
 ### 必要なもの  
-- 3Dモデル（なんでもいいけど.fbxが良い）
+- 3Dモデル（.fbxが良い）
 
 --- 
 ## 2. 作ってみる
@@ -74,3 +75,15 @@ VRChatなどで使わているらしい
 - FaceShadowを作成したい（処理は作ってるけどバグがあって動かない）
 - マットキャップが欲しい
 - その他レイヤーを追加したり、AOマップなどにも対応させたい
+
+## 5. その後  
+### FaceShadowの動作確認  
+色々と問題あり  
+<video src="V02.mp4" width="500" controls></video>  
+
+### MatCap実装  
+<img src="SS08.png" alt="alt text" width="500">  
+
+### **HairSpecularTextureの対応**
+<img src="SS06.png" alt="alt text" width="300">
+<img src="SS07.png" alt="alt text" width="500">  
