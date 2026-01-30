@@ -13,6 +13,10 @@
 **とりあえず送られてきたリポジトリを確認する**  
 <video src="V01.mp4" width="500" controls></video>  
 
+
+https://github.com/user-attachments/assets/f6ba52fd-b432-4afa-9a44-17c252e62eeb
+
+
 ## 2. なにを作るか
 **見た目部分で手伝ってほしいって言われたけどもうだいぶいい感じ...**  
 とりあえずテクスチャので2Dすぎるキャラクターにバンプマップで立体感を作る
