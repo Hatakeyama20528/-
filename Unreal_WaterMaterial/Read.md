@@ -45,6 +45,8 @@ UnityのShaderGraphでそれっぽいのを見たことがある（シリコン�
 ## 3. レベルに配置してみる  
 ### 気になる点はいくつかある物の結構いい感じなので仮完成！  
 
+https://github.com/user-attachments/assets/5b344edd-49d0-46f8-8473-6b1f280cb49a
+
 <video src="V01.mp4" width="500" controls></video>  
 
 ## 4. 改善案  
