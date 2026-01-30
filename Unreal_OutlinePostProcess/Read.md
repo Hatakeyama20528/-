@@ -30,5 +30,9 @@ https://learning.unity3d.jp/8933/
 ## 3. 実行動画 
 <video src="V01.mp4" width="500" controls></video>  
 
+
+https://github.com/user-attachments/assets/a15cc299-8461-4150-bf2e-51c62a083852
+
+
 ## 4. 改善案  
 - カメラの距離に応じてアウトラインの太さを修正しないと違和感が
