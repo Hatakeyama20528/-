@@ -71,6 +71,10 @@ VRChatなどで使わているらしい
 
 <video src="V01.mp4" width="500" controls></video>  
 
+
+https://github.com/user-attachments/assets/1a0c1406-5daa-4450-a754-cadfbcfa64c2
+
+
 ## 4. 改善案  
 - FaceShadowを作成したい（処理は作ってるけどバグがあって動かない）
 - マットキャップが欲しい
@@ -80,6 +84,10 @@ VRChatなどで使わているらしい
 ### FaceShadowの動作確認  
 色々と問題あり  
 <video src="V02.mp4" width="500" controls></video>  
+
+
+https://github.com/user-attachments/assets/c4de3959-a016-48a8-9acf-a05ada355461
+
 
 ### MatCap実装  
 <img src="SS08.png" alt="alt text" width="500">  
