@@ -1,97 +1,77 @@
 
-# 概要 
-### **マテリアルが作りたい**  
-
-DirectX12でのCPU→GPUへのリソースのストリーミングやオクルージョンカリングなどに挑戦中  
-分かってはいたものの全く成果が出ず...  
-一旦Unrealとかのゲームエンジンで前からやってみたかったことをやろう  
-そこから制作しています。
 
 # 目次
 1. [ToonShader](#1-ToonShader)
-2. [作ってみる](#2-作ってみる)
-3. [レベルに配置してみる](#3-レベルに配置してみる)
-4. [改善案](#4-改善案)
-5. [その後](#5-その後)
+2. [機能一覧](#2-機能一覧)
+3. [今後の発展案](#3-今後の発展案)
 
 --- 
 ## 1. ToonShader
-まずは目指す最終ルックを決めるところから  
-
-現在は非公開  
-[CiciToon](https://3dnchu.com/archives/cicitoon-character-shader-pak-v1-0/)  
-
-VRChatなどで使わているらしい  
-[lilToon](https://lilxyzw.github.io/lilToon/)  
-
-<img src="SS02.png" alt="alt text" width="300">  
-
---- 
-### どれも機能が多すぎて、全部はマネ出来ないので作りたい要素を選定する
-- メインカラーはとりあえず1枚
-- 影もレイヤーは1つから
-- ハイライト特性
-- アウトラインも欲しい（背面法で実装）
---- 
-### 必要なもの  
-- 3Dモデル（.fbxが良い）
-
---- 
-## 2. 作ってみる
-モデルを探してると良い感じなのがあんまりない  
-そこでHoYoverseがモデルを配信しているとのことでホームページからモデルを拝借  
-
-### ここで問題
-配信されていたモデルは拡張子が.pmxでUnrealでは使えない  
-でも.pmxを変換できるツールが存在しているらしい  
-[BlenderAddOns - MMDTools](https://extensions.blender.org/add-ons/mmd-tools/)  
-既にあるものは有難く使わせていただくことにする
-
---- 
-
-### 実際にUnreal上にインポート
-**モデルは問題なくインポートが出来たのでいよいよマテリアルを作っていく**  
-<img src="SS03.png" alt="alt text" width="500">  
-
----  
-
-### マテリアルノード整理をする大切さを学ぶ
-想像の5倍ノードがあふれかえって処理が追えなくなる  
-これのせいで一度全部作り直してます。。  
-<img src="SS04.png" alt="alt text" width="500">  
-
----  
-### パラメータUIを設定使いやすいように！  
-<img src="SS05.png" alt="alt text" width="500">  
-
----
-
-## 3. レベルに配置してみる  
-### 気になる点はいくつかある物の結構いい感じなので仮完成！  
+## 大まかな基本解説
+- Layer1Shadow、BaseColor、Highlightの三分割シェーディング  
+- 顔部分のFaceShadow、MatCapに対応（別途SDFTextureが必要）
+- 部位ごとのOutline設定可能  
+HoYoverseがモデルを配信しているとのことでホームページからモデルを拝借  
 
 <video src="V01.mp4" width="500" controls></video>  
 
+## 2. 機能一覧 
 
-https://github.com/user-attachments/assets/1a0c1406-5daa-4450-a754-cadfbcfa64c2
+### 1.MainColor
+- 基本となる色を決定する  
+- ベースのテクスチャと、乗算カラーを設定可能
+
+<img src="SS1.png" alt="alt text" width="800">
+
+### 2.Layer1Shadow
+- 基本色はテクスチャではなくパラメータでの調整  
+- 影の幅、通常色との補完可能
+
+<img src="SS2.png" alt="alt text" width="800">
+
+### 3.Layer2Shadow(2と同じ、現在撤去中)
+
+### 4.HighLight
+- 基本はShadowと同じ、幅、補完係数を準備、明るさを調整可能  
+
+<img src="SS4.png" alt="alt text" width="800">
+
+### 5.FaceShadow
+- SDFテクスチャを利用して顔のライティングを調整可能
+- BangShadow(おでこにの当たりの影)を設定可能
+- ifで処理分岐、FaceShadowが不要な場合は処理が走らないので負荷を気にする必要なし
+
+<img src="SS5.png" alt="alt text" width="800">
+
+### 6.MapCap
+MatCapとは（https://note.com/mishoji_yuki/n/n1554fd51f57a）
+- MatCapTextureに対応、キャラ装飾などに利用できる
+- 上記と同じで処理分岐を追加
+
+<img src="SS6.png" alt="alt text" width="800">
+
+### 7.Fresnel
+<img src="SS7.png" alt="alt text" width="800">  
+
+### 8.HairSpecular
+- ライトの当たり具合に応じて表示強度（アルファ）が調整可能
+
+<img src="SS8.png" alt="alt text" width="800">  
+<img src="SS85.png" alt="alt text" width="400">  
+
+### 9.Over
+- OverOpacity（浮動小数）
+- 目のハイライトなど光る部分を設定可能
+
+<img src="SS9.png" alt="alt text" width="300">
+
+### 999.OutLine
+- 背面法での部位毎のアウトライン表示
+- カメラ距離に合わせて太さが自動調整  
+
+<img src="SS999.png" alt="alt text" width="800">
 
 
-## 4. 改善案  
-- FaceShadowを作成したい（処理は作ってるけどバグがあって動かない）
-- マットキャップが欲しい
-- その他レイヤーを追加したり、AOマップなどにも対応させたい
+## 3. 今後の発展案 
 
-## 5. その後  
-### FaceShadowの動作確認  
-色々と問題あり  
-<video src="V02.mp4" width="500" controls></video>  
-
-
-https://github.com/user-attachments/assets/c4de3959-a016-48a8-9acf-a05ada355461
-
-
-### MatCap実装  
-<img src="SS08.png" alt="alt text" width="500">  
-
-### **HairSpecularTextureの対応**
-<img src="SS06.png" alt="alt text" width="300">
-<img src="SS07.png" alt="alt text" width="500">  
+- Layer1ShadowにShadowTextureを使用できるように
